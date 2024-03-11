@@ -19,14 +19,18 @@ main {
     border: 1px solid black;
     border-radius: 10px;
     width: 400px;
+    background-color: silver;
+    box-shadow: 0 4px 6px 2px;
 }
 
 .display-container {
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: inherit;
     min-height: 1.2em;
     margin: .8em;
     padding: .3em;
+    background-color: white;
+    box-shadow: 0 0 4px 1px;
 }
 
 .display {
@@ -42,7 +46,10 @@ main {
 
 button {
     font-size: inherit;
-    flex-basis: 20%;
+    flex-basis: 22%;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 0 2px 1px;
 }
 
 footer {
