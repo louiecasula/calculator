@@ -1,0 +1,57 @@
+body, html {
+    height: 96%;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex: auto;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+.app-container {
+    display: flex;
+    flex: 1 0 1;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.display-container {
+    border: 1px solid black;
+    border-radius: inherit;
+    margin: .8em;
+    padding: .3em;
+}
+
+.display {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: .8em;
+}
+
+button {
+    font-size: inherit;
+    flex-basis: 20%;
+}
+
+footer {
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+}
+
+footer i {
+    color: black;
+}
