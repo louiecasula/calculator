@@ -47,4 +47,6 @@ function operate(num1, operator, num2) {
 
 
 // Display:
+const display = document.querySelector('.display');
+display.innerHTML = num1 + " " + operator + " " + num2 + " = " + operate(num1, operator, num2);
 console.log(num1 + " " + operator + " " + num2 + " = " + operate(num1, operator, num2));

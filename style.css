@@ -24,6 +24,7 @@ main {
 .display-container {
     border: 1px solid black;
     border-radius: inherit;
+    min-height: 1.2em;
     margin: .8em;
     padding: .3em;
 }
