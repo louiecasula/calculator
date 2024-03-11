@@ -19,6 +19,10 @@ function modulus(num1, num2) {
     return (num2 !== 0)? num1 % num2: undefined;
 }
 
+function exponent(num1, num2) {
+    return num1 ** num2;
+}
+
 // Current operation:
 let num1 = 6;
 let operator = "%";
@@ -35,7 +39,9 @@ function operate(num1, operator, num2) {
         case("/"):
             return divide(num1, num2);
         case("%"):
-            return modulus(num1, num2);        
+            return modulus(num1, num2);
+        case("^"):
+            return exponent(num1, num2);    
     };
 };
 
