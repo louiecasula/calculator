@@ -8,6 +8,7 @@ btns.forEach((btn) => {
     btn.addEventListener('click', buttonClick);
 })
 
+// Calculator functions:
 function buttonClick() {
     console.log(this.innerText);
     if (isNaN(this.innerText)) {
@@ -37,7 +38,7 @@ function handleSymbol(sym) {
             removeFinalDisplayNumber();
             break;
         case("="):
-            currentTotal = operate(currentTotal, currentOperator, 2); // TODO: Find a way to store second operand
+            currentTotal = operate(currentTotal, currentOperator, 0); // TODO: Find a way to store second operand
             break;
         case("."):
             console.log("DEC"); // TODO
@@ -48,7 +49,7 @@ function handleSymbol(sym) {
 }
 
 function removeFinalDisplayNumber() {
-    if (-10 < currentTotal && currentTotal < 10) {
+    if ((-10 < currentTotal && currentTotal < 10) || isNaN(currentTotal)) {
         currentTotal = 0;
     } else { 
         let numberString = String(currentTotal);
@@ -56,45 +57,19 @@ function removeFinalDisplayNumber() {
     }
 }
 
-// Calculator functions:
-function add(num1, num2) {
-    return num1 + num2;
-}
-
-function subtract(num1, num2) {
-    return num1 - num2;
-}
-
-function multiply(num1, num2) {
-    return num1 * num2;
-}
-
-function divide(num1, num2) {
-    return (num2 !== 0)? num1 / num2: undefined;
-}
-
-function modulus(num1, num2) {
-    return (num2 !== 0)? num1 % num2: undefined;
-}
-
-function exponent(num1, num2) {
-    return num1 ** num2;
-}
-
-// Current operation:
 function operate(num1, operator, num2) {
     switch(operator) {
         case("+"):
-            return add(num1, num2);
+            return num1 + num2;
         case("-"):
-            return subtract(num1, num2);
+            return num1 - num2;
         case("x"):
-            return multiply(num1, num2);
+            return num1 * num2;
         case("÷"):
-            return divide(num1, num2);
+            return (num2 !== 0) ? num1 / num2: undefined;
         case("%"):
-            return modulus(num1, num2);
+            return (num2 !== 0) ? num1 % num2: undefined;
         case("^"):
-            return exponent(num1, num2);    
+            return num1 ** num2;    
     };
 };
