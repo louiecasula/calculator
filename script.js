@@ -5,7 +5,7 @@ const display = document.querySelector('.display');
 display.innerHTML = currentTotal;
 const btns = document.querySelectorAll('.btn');
 btns.forEach((btn) => {
-    btn.addEventListener('click', buttonClick)
+    btn.addEventListener('click', buttonClick);
 })
 
 function buttonClick() {
@@ -21,8 +21,10 @@ function buttonClick() {
 function handleNumber(num) {
     if (currentTotal === 0) {
         currentTotal = num;
-    } else {
+    } else if (num !== 0) {
         currentTotal = Number(String(currentTotal) + num);
+    } else {
+        currentTotal = 0;
     }
 }
 
@@ -52,10 +54,6 @@ function exponent(num1, num2) {
 }
 
 // Current operation:
-let num1 = 6;
-let operator = "%";
-let num2 = 2;
-
 function operate(num1, operator, num2) {
     switch(operator) {
         case("+"):
