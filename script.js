@@ -1,8 +1,8 @@
 // Variables & DOM elements
-let currentTotal = 0;
+let firstOperand = secondOperand = 0;
 let currentOperator = null;
 const display = document.querySelector('.display');
-display.innerHTML = currentTotal;
+display.innerHTML = firstOperand;
 const btns = document.querySelectorAll('.btn');
 btns.forEach((btn) => {
     btn.addEventListener('click', buttonClick);
@@ -16,32 +16,33 @@ function buttonClick() {
     } else {
         handleNumber(this.innerText);
     }
-    display.innerText = currentTotal;
+    display.innerText = firstOperand;
 }
 
 function handleNumber(num) {
-    if (currentTotal === 0) {
-        currentTotal = num;
-    } else if (num !== 0) {
-        currentTotal = Number(String(currentTotal) + num);
+    if (firstOperand === 0) {
+        firstOperand = num;
+    } else if (num != 0) {
+        firstOperand = Number(String(firstOperand) + num);
     } else {
-        currentTotal = 0;
+        firstOperand = 0;
     }
 }
 
 function handleSymbol(sym) {
     switch(sym) {
         case("C"):
-            currentTotal = 0;
+            firstOperand = 0;
             break;
         case("Del"):
             removeFinalDisplayNumber();
             break;
         case("="):
-            currentTotal = operate(currentTotal, currentOperator, 0); // TODO: Find a way to store second operand
+            firstOperand = operate(firstOperand, currentOperator, secondOperand); // TODO: Find a way to store second operand
+            currentOperator = null;
             break;
         case("."):
-            console.log("DEC"); // TODO
+            console.log("DEC"); // TODO: Extra Credit
             break;
         default:
             currentOperator = sym;
@@ -49,11 +50,11 @@ function handleSymbol(sym) {
 }
 
 function removeFinalDisplayNumber() {
-    if ((-10 < currentTotal && currentTotal < 10) || isNaN(currentTotal)) {
-        currentTotal = 0;
+    if ((-10 < firstOperand && firstOperand < 10) || isNaN(firstOperand)) {
+        firstOperand = 0;
     } else { 
-        let numberString = String(currentTotal);
-        currentTotal = numberString.substring(0, numberString.length - 1);
+        let numberString = String(firstOperand);
+        firstOperand = numberString.substring(0, numberString.length - 1);
     }
 }
 
