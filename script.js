@@ -34,7 +34,7 @@ function handleSymbol(sym) {
             currentTotal = 0;
             break;
         case("Del"):
-            removeLastDisplayNumber(); // TODO
+            removeFinalDisplayNumber();
             break;
         case("="):
             currentTotal = operate(currentTotal, currentOperator, 2); // TODO: Find a way to store second operand
@@ -44,6 +44,15 @@ function handleSymbol(sym) {
             break;
         default:
             currentOperator = sym;
+    }
+}
+
+function removeFinalDisplayNumber() {
+    if (-10 < currentTotal && currentTotal < 10) {
+        currentTotal = 0;
+    } else { 
+        let numberString = String(currentTotal);
+        currentTotal = numberString.substring(0, numberString.length - 1);
     }
 }
 
