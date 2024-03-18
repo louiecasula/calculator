@@ -1,6 +1,6 @@
 // Variables & DOM elements
 let currentTotal = 0;
-let currentoperator = null;
+let currentOperator = null;
 const display = document.querySelector('.display');
 display.innerHTML = currentTotal;
 const btns = document.querySelectorAll('.btn');
@@ -25,6 +25,25 @@ function handleNumber(num) {
         currentTotal = Number(String(currentTotal) + num);
     } else {
         currentTotal = 0;
+    }
+}
+
+function handleSymbol(sym) {
+    switch(sym) {
+        case("C"):
+            currentTotal = 0;
+            break;
+        case("Del"):
+            removeLastDisplayNumber(); // TODO
+            break;
+        case("="):
+            currentTotal = operate(currentTotal, currentOperator, 2); // TODO: Find a way to store second operand
+            break;
+        case("."):
+            console.log("DEC"); // TODO
+            break;
+        default:
+            currentOperator = sym;
     }
 }
 
@@ -60,9 +79,9 @@ function operate(num1, operator, num2) {
             return add(num1, num2);
         case("-"):
             return subtract(num1, num2);
-        case("*"):
+        case("x"):
             return multiply(num1, num2);
-        case("/"):
+        case("÷"):
             return divide(num1, num2);
         case("%"):
             return modulus(num1, num2);
