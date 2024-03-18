@@ -14,31 +14,42 @@ function buttonClick() {
     if (isNaN(this.innerText)) {
         handleSymbol(this.innerText);
     } else {
-        handleNumber(this.innerText);
+        handleNumber(Number(this.innerText));
     }
     display.innerText = firstOperand;
 }
 
 function handleNumber(num) {
-    if (firstOperand === 0) {
-        firstOperand = num;
-    } else if (num != 0) {
-        firstOperand = Number(String(firstOperand) + num);
+    if (currentOperator === null) {
+        if (firstOperand === 0) {
+            firstOperand = num;
+        } else if (num != 0) {
+            firstOperand = Number(String(firstOperand) + num);
+        } else {
+            firstOperand = 0;
+        }
     } else {
-        firstOperand = 0;
+        if (secondOperand === 0) {
+            secondOperand = num;
+        } else if (num != 0) {
+            secondOperand = Number(String(secondOperand) + num);
+        } else {
+            secondOperand = 0;
+        }
     }
 }
 
 function handleSymbol(sym) {
     switch(sym) {
         case("C"):
-            firstOperand = 0;
+            clearDisplay();
             break;
         case("Del"):
             removeFinalDisplayNumber();
             break;
         case("="):
-            firstOperand = operate(firstOperand, currentOperator, secondOperand); // TODO: Find a way to store second operand
+            firstOperand = operate(firstOperand, currentOperator, secondOperand);
+            secondOperand = 0;
             currentOperator = null;
             break;
         case("."):
@@ -47,6 +58,12 @@ function handleSymbol(sym) {
         default:
             currentOperator = sym;
     }
+}
+
+function clearDisplay() {
+    firstOperand = 0;
+    secondOperand = 0;
+    currentOperator = null;
 }
 
 function removeFinalDisplayNumber() {
