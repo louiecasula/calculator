@@ -48,9 +48,11 @@ function handleSymbol(sym) {
             removeFinalDisplayNumber();
             break;
         case("="):
-            firstOperand = operate(firstOperand, currentOperator, secondOperand);
-            secondOperand = 0;
-            currentOperator = null;
+            if (currentOperator !== null) {
+                firstOperand = operate(firstOperand, currentOperator, secondOperand);
+                secondOperand = 0;
+                currentOperator = null;
+            }
             break;
         case("."):
             console.log("DEC"); // TODO: Extra Credit
