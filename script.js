@@ -12,8 +12,13 @@ btns.forEach((btn) => {
 // Calculator functions:
 function buttonClick() {
     console.log(this.innerText);
-    if (isNaN(this.innerText)) {
-        handleSymbol(this.innerText);
+    if (isNaN(firstOperand) && firstOperand !== '') {
+        clearDisplay();
+    }
+    else if (isNaN(this.innerText)) {
+        if (firstOperand !== '') {
+            handleSymbol(this.innerText);
+        } 
     } else {
         handleNumber(Number(this.innerText));
     }
@@ -79,6 +84,7 @@ function handleSymbol(sym) {
 
 function clearDisplay() {
     buffer.innerText = '';
+    display.innerText = 0;
     firstOperand = '';
     secondOperand = '';
     currentOperator = null;
