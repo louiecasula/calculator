@@ -35,7 +35,12 @@ main {
     box-shadow: 0 0 4px 1px;
 }
 
-.display {
+.buffer {
+    font-size: .5em;
+    min-height: 1.3em;
+}
+
+.display, .buffer {
     display: flex;
     justify-content: flex-end;
     font-family: "Orbitron", sans-serif;

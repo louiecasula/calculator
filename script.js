@@ -1,6 +1,7 @@
 // Variables & DOM elements
 let firstOperand = secondOperand = 0;
 let currentOperator = null;
+const buffer = document.querySelector('.buffer');
 const display = document.querySelector('.display');
 display.innerHTML = firstOperand;
 const btns = document.querySelectorAll('.btn');
@@ -46,6 +47,7 @@ function handleSymbol(sym) {
         case("="):
             if (currentOperator !== null) {
                 let answer = operate(firstOperand, currentOperator, secondOperand);
+                buffer.innerText = `${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`;
                 console.log(`${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`);
                 firstOperand = answer;
                 secondOperand = 0;
@@ -57,15 +59,18 @@ function handleSymbol(sym) {
             break;
         default:
             if (currentOperator !== null && secondOperand !== 0) {
+                buffer.innerText = `${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`;
                 firstOperand = operate(firstOperand, currentOperator, secondOperand);
                 secondOperand = 0;
                 currentOperator = null;
             }
             currentOperator = sym;
+            buffer.innerText = `${firstOperand} ${currentOperator}`;
     }
 }
 
 function clearDisplay() {
+    buffer.innerText = '';
     firstOperand = 0;
     secondOperand = 0;
     currentOperator = null;
