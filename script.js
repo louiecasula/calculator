@@ -82,11 +82,21 @@ function clearDisplay() {
 }
 
 function removeFinalDisplayNumber() {
-    if ((-10 < firstOperand && firstOperand < 10) || isNaN(firstOperand)) {
-        firstOperand = 0;
-    } else { 
-        let numberString = String(firstOperand);
-        firstOperand = numberString.substring(0, numberString.length - 1);
+    if (buffer.innerText.length > 0) {
+        if ((-10 < secondOperand && secondOperand < 10) || isNaN(secondOperand)) {
+            secondOperand = 0;
+        } else { 
+            let numberString = String(secondOperand);
+            secondOperand = numberString.substring(0, numberString.length - 1);
+        }
+    }
+    else {
+        if ((-10 < firstOperand && firstOperand < 10) || isNaN(firstOperand)) {
+            firstOperand = 0;
+        } else { 
+            let numberString = String(firstOperand);
+            firstOperand = numberString.substring(0, numberString.length - 1);
+        }
     }
 }
 
