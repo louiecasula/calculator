@@ -1,9 +1,9 @@
 // Variables & DOM elements
-let firstOperand = secondOperand = 0;
+let firstOperand = secondOperand = '';
 let currentOperator = null;
 const buffer = document.querySelector('.buffer');
 const display = document.querySelector('.display');
-display.innerHTML = firstOperand;
+display.innerHTML = 0;
 const btns = document.querySelectorAll('.btn');
 btns.forEach((btn) => {
     btn.addEventListener('click', buttonClick);
@@ -17,23 +17,25 @@ function buttonClick() {
     } else {
         handleNumber(Number(this.innerText));
     }
-    if (secondOperand !== 0) {
+    if (secondOperand !== '') {
         display.innerText = secondOperand;
+    } else if (this.innerText === 'C') {
+        display.innerText = 0;
     }
     else {
-        display.innerText = firstOperand;
+        firstOperand != ''? display.innerText = firstOperand: 0;
     }
 }
 
 function handleNumber(num) {
     if (currentOperator === null) {
-        if (firstOperand === 0 && num === 0) {
+        if ((firstOperand === 0 || firstOperand === '') && num === 0) {
             firstOperand = 0;
         } else {
             firstOperand = Number(String(firstOperand) + num);
         }
     } else {
-        if (secondOperand === 0 && num === 0) {
+        if ((secondOperand === 0 || secondOperand === '') && num === 0) {
             secondOperand = 0;
         } else {
             secondOperand = Number(String(secondOperand) + num);
@@ -55,7 +57,7 @@ function handleSymbol(sym) {
                 buffer.innerText = `${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`;
                 console.log(`${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`);
                 firstOperand = answer;
-                secondOperand = 0;
+                secondOperand = '';
                 currentOperator = null;
             }
             break;
@@ -63,10 +65,11 @@ function handleSymbol(sym) {
             console.log("DEC"); // TODO: Extra Credit
             break;
         default:
-            if (currentOperator !== null && secondOperand !== 0) {
+            if (currentOperator !== null && secondOperand !== '') {
+                let answer = operate(firstOperand, currentOperator, secondOperand);
                 buffer.innerText = `${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`;
-                firstOperand = operate(firstOperand, currentOperator, secondOperand);
-                secondOperand = 0;
+                firstOperand = answer;
+                secondOperand = '';
                 currentOperator = null;
             }
             currentOperator = sym;
@@ -76,8 +79,8 @@ function handleSymbol(sym) {
 
 function clearDisplay() {
     buffer.innerText = '';
-    firstOperand = 0;
-    secondOperand = 0;
+    firstOperand = '';
+    secondOperand = '';
     currentOperator = null;
 }
 
