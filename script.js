@@ -17,7 +17,12 @@ function buttonClick() {
     } else {
         handleNumber(Number(this.innerText));
     }
-    display.innerText = firstOperand;
+    if (secondOperand !== 0) {
+        display.innerText = secondOperand;
+    }
+    else {
+        display.innerText = firstOperand;
+    }
 }
 
 function handleNumber(num) {
