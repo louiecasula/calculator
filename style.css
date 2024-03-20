@@ -21,7 +21,7 @@ main {
     border: 1px solid black;
     border-radius: 10px;
     width: 400px;
-    background-color: silver;
+    background: linear-gradient(180deg, #4D4EE1, #4EC1CB);
     box-shadow: 0 4px 6px 2px;
 }
 
@@ -31,7 +31,7 @@ main {
     min-height: 1.2em;
     margin: .8em;
     padding: .3em;
-    background-color: white;
+    background-color: #fffffff0;
     box-shadow: 0 0 4px 1px;
 }
 
@@ -56,7 +56,7 @@ button {
     font-size: inherit;
     flex-basis: 22%;
     border-radius: 16px;
-    background-color: white;
+    background-color: #ffffffdf;
     box-shadow: 0 0 2px 1px;
 }
 
