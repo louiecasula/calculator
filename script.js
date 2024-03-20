@@ -21,20 +21,16 @@ function buttonClick() {
 
 function handleNumber(num) {
     if (currentOperator === null) {
-        if (firstOperand === 0) {
-            firstOperand = num;
-        } else if (num != 0) {
-            firstOperand = Number(String(firstOperand) + num);
-        } else {
+        if (firstOperand === 0 && num === 0) {
             firstOperand = 0;
+        } else {
+            firstOperand = Number(String(firstOperand) + num);
         }
     } else {
-        if (secondOperand === 0) {
-            secondOperand = num;
-        } else if (num != 0) {
-            secondOperand = Number(String(secondOperand) + num);
-        } else {
+        if (secondOperand === 0 && num === 0) {
             secondOperand = 0;
+        } else {
+            secondOperand = Number(String(secondOperand) + num);
         }
     }
 }
