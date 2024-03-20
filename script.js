@@ -49,7 +49,9 @@ function handleSymbol(sym) {
             break;
         case("="):
             if (currentOperator !== null) {
-                firstOperand = operate(firstOperand, currentOperator, secondOperand);
+                let answer = operate(firstOperand, currentOperator, secondOperand);
+                console.log(`${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`);
+                firstOperand = answer;
                 secondOperand = 0;
                 currentOperator = null;
             }
@@ -58,6 +60,11 @@ function handleSymbol(sym) {
             console.log("DEC"); // TODO: Extra Credit
             break;
         default:
+            if (currentOperator !== null && secondOperand !== 0) {
+                firstOperand = operate(firstOperand, currentOperator, secondOperand);
+                secondOperand = 0;
+                currentOperator = null;
+            }
             currentOperator = sym;
     }
 }
