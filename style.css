@@ -11,7 +11,7 @@ main {
     height: inherit;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 .app-container {
@@ -20,6 +20,8 @@ main {
     flex-direction: column;
     border: 1px solid black;
     border-radius: 10px;
+    margin-top: 100px;
+    margin-bottom: 100px;
     width: 400px;
     background: linear-gradient(180deg, #4D4EE1, #4EC1CB);
     box-shadow: 0 4px 6px 2px;
@@ -30,6 +32,7 @@ main {
     border-radius: inherit;
     min-height: 1.2em;
     margin: .8em;
+    margin-bottom: 0;
     padding: .3em;
     background-color: #fffffff0;
     box-shadow: 0 0 4px 1px;
@@ -60,11 +63,16 @@ button {
     box-shadow: 0 0 2px 1px;
 }
 
+.half {
+    flex-basis: 47%;
+}
+
 footer {
     display: flex;
     flex: auto;
     justify-content: center;
     align-items: center;
+    font-family: 'Orbitron', sans-serif;
     font-size: 1.1em;
 }
 
