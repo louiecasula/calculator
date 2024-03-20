@@ -91,17 +91,23 @@ function clearDisplay() {
 }
 
 function removeFinalDisplayNumber() {
-    if (buffer.innerText.length > 0) {
-        if ((-10 < secondOperand && secondOperand < 10) || isNaN(secondOperand)) {
+    if (secondOperand != '') {
+        if ((secondOperand > 0 && String(secondOperand).length === 1) ||
+        (secondOperand < 0 && String(secondOperand).length === 2) ||
+        isNaN(secondOperand)) {
             secondOperand = 0;
+            display.innerText = 0;
         } else { 
             let numberString = String(secondOperand);
             secondOperand = numberString.substring(0, numberString.length - 1);
         }
     }
     else {
-        if ((-10 < firstOperand && firstOperand < 10) || isNaN(firstOperand)) {
+        if ((firstOperand > 0 && String(firstOperand).length === 1) ||
+        (firstOperand < 0 && String(firstOperand).length === 2) ||
+        isNaN(firstOperand)) {
             firstOperand = 0;
+            display.innerText = 0;
         } else { 
             let numberString = String(firstOperand);
             firstOperand = numberString.substring(0, numberString.length - 1);
