@@ -56,6 +56,13 @@ function handleSymbol(sym) {
         case("DEL"):
             removeFinalDisplayNumber();
             break;
+        case("(-)"):
+            if (currentOperator === null && firstOperand !== null) {
+                firstOperand *= -1;
+            } else if (currentOperator !== null & secondOperand !== null) {
+                secondOperand *= -1;
+            }
+            break;
         case("="):
             if (currentOperator !== null) {
                 let answer = operate(firstOperand, currentOperator, secondOperand);
