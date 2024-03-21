@@ -68,6 +68,10 @@ button {
     box-shadow: 0 0 2px 1px black;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .half {
     flex-basis: 47%;
 }
