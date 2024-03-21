@@ -14,7 +14,7 @@ I underestimated how much I would enjoy this project, and it truly put my proble
 
 - Display shows previous operation along with currently typed number
 - Unary operators: negatives, factorials
-- Binary operatoes: addition, subtraction, multiplication, division, modulus, exponentiation
+- Binary operators: addition, subtraction, multiplication, division, modulus, exponentiation
 - Clear and Delete buttons
 - Decimal to support floating numbers
 
