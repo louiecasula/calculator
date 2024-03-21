@@ -8,7 +8,7 @@ I underestimated how much I would enjoy this project, and it truly put my proble
 ## Demo
 
 [Try it out!](https://louiecasula.github.io/calculator/)<br><br>
-<img width="345" alt="Screenshot 2024-03-21 151211" src="https://github.com/louiecasula/calculator/assets/121182711/fb4107ce-aa9c-4e75-9a88-ad9fa1917ddf">
+<img width="382" alt="Screenshot 2024-03-21 160229" src="https://github.com/louiecasula/calculator/assets/121182711/e01c2095-af70-404d-9487-a47baa64112d">
 
 ## Features
 
