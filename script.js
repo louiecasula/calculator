@@ -24,7 +24,7 @@ function buttonClick() {
     }
     if (secondOperand !== '') {
         display.innerText = secondOperand;
-    } else if (this.innerText === 'C') {
+    } else if (this.innerText === 'CLEAR') {
         display.innerText = 0;
     }
     else {
@@ -50,10 +50,10 @@ function handleNumber(num) {
 
 function handleSymbol(sym) {
     switch(sym) {
-        case("C"):
+        case("CLEAR"):
             clearDisplay();
             break;
-        case("Del"):
+        case("DEL"):
             removeFinalDisplayNumber();
             break;
         case("="):
