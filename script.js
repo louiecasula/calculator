@@ -12,7 +12,7 @@ btns.forEach((btn) => {
 // Calculator functions:
 function buttonClick() {
     console.log(this.innerText);
-    if (isNaN(firstOperand) && firstOperand !== '') {
+    if ((isNaN(firstOperand) || firstOperand == Infinity) && firstOperand !== '') {
         clearDisplay();
     }
     else if (isNaN(this.innerText)) {
