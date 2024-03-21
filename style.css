@@ -46,7 +46,9 @@ main {
 .display, .buffer {
     display: flex;
     justify-content: flex-end;
+    text-align: right;
     font-family: "Orbitron", sans-serif;
+    word-break: break-word;
 }
 
 .row {
