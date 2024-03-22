@@ -63,6 +63,21 @@ function handleSymbol(sym) {
                 secondOperand *= -1;
             }
             break;
+        case("!"):
+            if (firstOperand !== '' && currentOperator === null) {
+                let answer = factorial(firstOperand);
+                buffer.innerText = `${firstOperand}! = ${answer}`;
+                console.log(`${firstOperand}! = ${answer}`);
+                firstOperand = answer;
+            } else if (currentOperator !== null && secondOperand !== '') {
+                let answer = operate(firstOperand, currentOperator, factorial(secondOperand));
+                buffer.innerText = `${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`;
+                console.log(`${firstOperand} ${currentOperator} ${secondOperand}! = ${answer}`);
+                firstOperand = answer;
+                secondOperand = '';
+                currentOperator = null;
+            }
+            break;
         case("="):
             if (currentOperator !== null) {
                 let answer = operate(firstOperand, currentOperator, secondOperand);
@@ -120,6 +135,17 @@ function removeFinalDisplayNumber() {
             firstOperand = numberString.substring(0, numberString.length - 1);
         }
     }
+}
+
+function factorial(num) {
+    if (num === 0) { return 1; }
+    if (num < 0 || num % 1 !== 0) { return NaN; }
+    if (num > 170) { return Infinity; }
+    let res = 1;
+    for (let i = 1; i <= num; i++) {
+        res *= i;
+    }
+    return res;
 }
 
 function operate(num1, operator, num2) {
