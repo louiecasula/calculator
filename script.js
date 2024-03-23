@@ -11,24 +11,23 @@ display.innerHTML = firstOperand;
 // Calculator functions:
 function buttonClick() {
     console.log(this.innerText);
+    if (this.innerText === 'CLEAR') {
+        clearDisplay();
+        display.innerText ='0';
+        return;
+    }
     if ((isNaN(firstOperand) || firstOperand === Infinity) && firstOperand !== '0') {
         clearDisplay();
+        return;
     }
-    else if (isNaN(this.innerText)) {
-        if (firstOperand !== '0') {
+    if (isNaN(this.innerText)) {
+        if (firstOperand !== '0' || firstOperand.includes('.')) {
             handleSymbol(this.innerText);
         } 
     } else {
         handleNumber(this.innerText);
     }
-    if (secondOperand !== '') {
-        display.innerText = secondOperand;
-    } else if (this.innerText === 'CLEAR') {
-        display.innerText = '0';
-    }
-    else {
-        display.innerText = firstOperand;
-    }
+    display.innerText = secondOperand !== '' ? secondOperand : firstOperand;
 }
 
 function handleNumber(num) {
