@@ -21,9 +21,7 @@ function buttonClick() {
         return;
     }
     if (isNaN(this.innerText)) {
-        if (firstOperand !== '0' || firstOperand.includes('.')) {
-            handleSymbol(this.innerText);
-        } 
+        handleSymbol(this.innerText);
     } else {
         handleNumber(this.innerText);
     }
