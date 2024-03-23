@@ -27,7 +27,7 @@ function buttonClick() {
         display.innerText = '0';
     }
     else {
-        display.innerText = firstOperand !== '0'? firstOperand: 0;
+        display.innerText = firstOperand !== '0'? firstOperand: '0';
     }
 }
 
@@ -90,15 +90,15 @@ function handleDecimal() {
 
 function makeNumberNegative() {
     if (currentOperator === null) {
-        firstOperand = String(Number(firstOperand * -1));
+        firstOperand = String(Number(firstOperand) * -1);
     } else if (currentOperator !== null & secondOperand !== null) {
-        secondOperand = String(Number(secondOperand * -1));
+        secondOperand = String(Number(secondOperand) * -1);
     }
 }
 
 function clearDisplay() {
     buffer.innerText = '';
-    display.innerText = 0;
+    display.innerText = '0';
     firstOperand = '0';
     secondOperand = '';
     currentOperator = null;
