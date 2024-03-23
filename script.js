@@ -170,3 +170,48 @@ function operate(num1, operator, num2) {
             return num1 ** num2;    
     };
 };
+
+// Keystroke event listener:
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+
+    switch(key) {
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            handleNumber(key);
+            break;
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+            handleSymbol(convertSymbol(key));
+            break;
+        case 'Enter':
+            handleSymbol('=');
+            break;
+        case '.':
+            handleSymbol('.');
+            break;
+        case 'Backspace':
+            removeFinalDisplayNumber();
+            break;
+        case 'c':
+            clearDisplay();
+            break;
+    }
+
+    function convertSymbol(key) {
+        const symbols = { '*': 'x', '/': '÷' };
+        return symbols[key] || key;
+    }
+
+    display.innerText = secondOperand !== '' ? secondOperand : firstOperand;
+});
