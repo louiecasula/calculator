@@ -60,19 +60,7 @@ function handleSymbol(sym) {
             makeNumberNegative();
             break;
         case("!"):
-            if (firstOperand !== '' && currentOperator === null) {
-                let answer = factorial(firstOperand);
-                buffer.innerText = `${firstOperand}! = ${answer}`;
-                console.log(`${firstOperand}! = ${answer}`);
-                firstOperand = answer;
-            } else if (currentOperator !== null && secondOperand !== '') {
-                let answer = operate(firstOperand, currentOperator, factorial(secondOperand));
-                buffer.innerText = `${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`;
-                console.log(`${firstOperand} ${currentOperator} ${secondOperand}! = ${answer}`);
-                firstOperand = answer;
-                secondOperand = '';
-                currentOperator = null;
-            }
+            handleFactorial();
             break;
         case("="):
             if (currentOperator !== null) {
@@ -152,6 +140,22 @@ function removeFinalDisplayNumber() {
             let numberString = String(firstOperand);
             firstOperand = numberString.substring(0, numberString.length - 1);
         }
+    }
+}
+
+function handleFactorial() {
+    if (currentOperator === null) {
+        let answer = factorial(firstOperand);
+        buffer.innerText = `${firstOperand}! = ${answer}`;
+        console.log(`${firstOperand}! = ${answer}`);
+        firstOperand = String(answer);
+    } else if (currentOperator !== null && secondOperand !== '') {
+        let answer = operate(firstOperand, currentOperator, factorial(secondOperand));
+        buffer.innerText = `${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`;
+        console.log(`${firstOperand} ${currentOperator} ${secondOperand}! = ${answer}`);
+        firstOperand = String(answer);
+        secondOperand = '';
+        currentOperator = null;
     }
 }
 
