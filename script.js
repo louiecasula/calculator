@@ -63,18 +63,10 @@ function handleSymbol(sym) {
             handleFactorial();
             break;
         case("="):
-            if (currentOperator !== null) {
-                secondOperand = Number(secondOperand);
-                let answer = operate(firstOperand, currentOperator, secondOperand);
-                buffer.innerText = `${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`;
-                console.log(`${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`);
-                firstOperand = answer;
-                secondOperand = '';
-                currentOperator = null;
-            }
+            handleOperation();
             break;
         case("."):
-            handleDecimal()
+            handleDecimal();
             break;
         default:
             if (currentOperator !== null && secondOperand !== '') {
@@ -168,6 +160,18 @@ function factorial(num) {
         res *= i;
     }
     return res;
+}
+
+function handleOperation() {
+    if (currentOperator !== null) {
+        firstOperand = Number(firstOperand), secondOperand = Number(secondOperand);
+        let answer = operate(firstOperand, currentOperator, secondOperand);
+        buffer.innerText = `${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`;
+        console.log(`${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`);
+        firstOperand = String(answer);
+        secondOperand = '';
+        currentOperator = null;
+    }
 }
 
 function operate(num1, operator, num2) {
