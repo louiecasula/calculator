@@ -167,9 +167,6 @@ function handleOperation() {
 }
 
 function operate(num1, operator, num2) {
-    if (isNaN(num1)) {
-        return 0;
-    }
     switch(operator) {
         case("+"):
             return num1 + num2;
