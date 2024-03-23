@@ -192,13 +192,14 @@ document.addEventListener('keydown', (event) => {
         case '-':
         case '*':
         case '/':
+        case '%':
+        case '.':
+        case '^':
+        case '~':
             handleSymbol(convertSymbol(key));
             break;
         case 'Enter':
             handleSymbol('=');
-            break;
-        case '.':
-            handleSymbol('.');
             break;
         case 'Backspace':
             removeFinalDisplayNumber();
@@ -209,7 +210,7 @@ document.addEventListener('keydown', (event) => {
     }
 
     function convertSymbol(key) {
-        const symbols = { '*': 'x', '/': '÷' };
+        const symbols = { '*': 'x', '/': '÷', '~': '(-)' };
         return symbols[key] || key;
     }
 
