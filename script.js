@@ -1,50 +1,49 @@
 // Variables & DOM elements
-let firstOperand = secondOperand = '';
-let currentOperator = null;
-let currentNumber = currentOperator === null? firstOperand: secondOperand;
+let firstOperand = '0', secondOperand = '', currentOperator = null;
 const buffer = document.querySelector('.buffer');
 const display = document.querySelector('.display');
-display.innerHTML = 0;
 const btns = document.querySelectorAll('.btn');
 btns.forEach((btn) => {
     btn.addEventListener('click', buttonClick);
 })
+display.innerHTML = firstOperand;
 
 // Calculator functions:
 function buttonClick() {
     console.log(this.innerText);
-    if ((isNaN(firstOperand) || firstOperand == Infinity) && firstOperand !== '') {
+    if ((isNaN(firstOperand) || firstOperand === Infinity) && firstOperand !== '0') {
         clearDisplay();
     }
     else if (isNaN(this.innerText)) {
-        if (firstOperand !== '') {
+        if (firstOperand !== '0') {
             handleSymbol(this.innerText);
         } 
     } else {
-        handleNumber(Number(this.innerText));
+        handleNumber(this.innerText);
     }
     if (secondOperand !== '') {
         display.innerText = secondOperand;
     } else if (this.innerText === 'CLEAR') {
-        display.innerText = 0;
+        display.innerText = '0';
     }
     else {
-        firstOperand != ''? display.innerText = firstOperand: 0;
+        display.innerText = firstOperand !== '0'? firstOperand: 0;
     }
 }
 
 function handleNumber(num) {
+    num = Number(num);
     if (currentOperator === null) {
-        if ((firstOperand === 0 || firstOperand === '') && num === 0) {
-            firstOperand = 0;
+        if ((firstOperand === '0') && num === 0) {
+            firstOperand = '0';
         } else {
-            firstOperand = Number(String(firstOperand) + num);
+            firstOperand = String(Number(firstOperand + num));
         }
     } else {
-        if ((secondOperand === 0 || secondOperand === '') && num === 0) {
-            secondOperand = 0;
+        if ((secondOperand === '0' || secondOperand === '') && num === 0) {
+            secondOperand = '0';
         } else {
-            secondOperand = Number(String(secondOperand) + num);
+            secondOperand = String(Number(secondOperand + num));
         }
     }
 }
@@ -58,11 +57,7 @@ function handleSymbol(sym) {
             removeFinalDisplayNumber();
             break;
         case("(-)"):
-            if (currentOperator === null && firstOperand !== null) {
-                firstOperand *= -1;
-            } else if (currentOperator !== null & secondOperand !== null) {
-                secondOperand *= -1;
-            }
+            makeNumberNegative();
             break;
         case("!"):
             if (firstOperand !== '' && currentOperator === null) {
@@ -81,6 +76,7 @@ function handleSymbol(sym) {
             break;
         case("="):
             if (currentOperator !== null) {
+                secondOperand = Number(secondOperand);
                 let answer = operate(firstOperand, currentOperator, secondOperand);
                 buffer.innerText = `${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`;
                 console.log(`${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`);
@@ -90,9 +86,7 @@ function handleSymbol(sym) {
             }
             break;
         case("."):
-            // if (firstOperand === 0 && !String(firstOperand).includes(".")) {
-            //     firstOperand =
-            // }
+            handleDecimal()
             break;
         default:
             if (currentOperator !== null && secondOperand !== '') {
@@ -104,6 +98,27 @@ function handleSymbol(sym) {
             }
             currentOperator = sym;
             buffer.innerText = `${firstOperand} ${currentOperator}`;
+    }
+}
+
+function handleDecimal() {
+    let currentNumber = currentOperator === null? firstOperand: secondOperand;
+    if (!currentNumber.includes('.')) {
+        currentNumber += currentNumber.length === 0 ? '0.' : '.';
+    }
+    if (currentOperator === null) {
+        firstOperand = currentNumber;
+    } else {
+        secondOperand = currentNumber;
+    }
+    display.innerText = currentNumber;
+}
+
+function makeNumberNegative() {
+    if (currentOperator === null) {
+        firstOperand = String(Number(firstOperand * -1));
+    } else if (currentOperator !== null & secondOperand !== null) {
+        secondOperand = String(Number(secondOperand * -1));
     }
 }
 
