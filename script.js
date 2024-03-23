@@ -99,32 +99,30 @@ function makeNumberNegative() {
 function clearDisplay() {
     buffer.innerText = '';
     display.innerText = 0;
-    firstOperand = '';
+    firstOperand = '0';
     secondOperand = '';
     currentOperator = null;
 }
 
 function removeFinalDisplayNumber() {
-    if (secondOperand != '') {
-        if ((secondOperand > 0 && String(secondOperand).length === 1) ||
-        (secondOperand < 0 && String(secondOperand).length === 2) ||
+    if (secondOperand !== '') {
+        if ((Number(secondOperand) > 0 && secondOperand.length === 1) ||
+        (Number(secondOperand) < 0 && secondOperand.length === 2) ||
         isNaN(secondOperand)) {
-            secondOperand = 0;
-            display.innerText = 0;
+            secondOperand = '0';
+            display.innerText = '0';
         } else { 
-            let numberString = String(secondOperand);
-            secondOperand = numberString.substring(0, numberString.length - 1);
+            secondOperand = secondOperand.substring(0, secondOperand.length - 1);
         }
     }
     else {
-        if ((firstOperand > 0 && String(firstOperand).length === 1) ||
-        (firstOperand < 0 && String(firstOperand).length === 2) ||
+        if ((Number(firstOperand) > 0 && firstOperand.length === 1) ||
+        (Number(firstOperand) < 0 && firstOperand.length === 2) ||
         isNaN(firstOperand)) {
-            firstOperand = 0;
-            display.innerText = 0;
+            firstOperand = '0';
+            display.innerText = '0';
         } else { 
-            let numberString = String(firstOperand);
-            firstOperand = numberString.substring(0, numberString.length - 1);
+            firstOperand = firstOperand.substring(0, firstOperand.length - 1);
         }
     }
 }
