@@ -27,7 +27,7 @@ function buttonClick() {
         display.innerText = '0';
     }
     else {
-        display.innerText = firstOperand !== '0'? firstOperand: '0';
+        display.innerText = firstOperand;
     }
 }
 
