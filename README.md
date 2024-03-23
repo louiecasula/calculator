@@ -17,6 +17,7 @@ I underestimated how much I would enjoy this project, and it truly put my proble
 - Binary operators: addition, subtraction, multiplication, division, modulus, exponentiation
 - Clear and Delete buttons
 - Decimal to support floating numbers
+- Supports keystrokes for most buttons
 
 ## Technologies Used
 
