@@ -62,20 +62,14 @@ function handleSymbol(sym) {
         case("!"):
             handleFactorial();
             break;
-        case("="):
-            handleOperation();
-            break;
         case("."):
             handleDecimal();
             break;
+        case("="):
+            handleOperation();
+            break;
         default:
-            if (currentOperator !== null && secondOperand !== '') {
-                let answer = operate(firstOperand, currentOperator, secondOperand);
-                buffer.innerText = `${firstOperand} ${currentOperator} ${secondOperand} = ${answer}`;
-                firstOperand = answer;
-                secondOperand = '';
-                currentOperator = null;
-            }
+            handleOperation();
             currentOperator = sym;
             buffer.innerText = `${firstOperand} ${currentOperator}`;
     }
