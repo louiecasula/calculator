@@ -1,6 +1,7 @@
 // Variables & DOM elements
 let firstOperand = secondOperand = '';
 let currentOperator = null;
+let currentNumber = currentOperator === null? firstOperand: secondOperand;
 const buffer = document.querySelector('.buffer');
 const display = document.querySelector('.display');
 display.innerHTML = 0;
@@ -89,7 +90,9 @@ function handleSymbol(sym) {
             }
             break;
         case("."):
-            console.log("DEC"); // TODO: Extra Credit
+            // if (firstOperand === 0 && !String(firstOperand).includes(".")) {
+            //     firstOperand =
+            // }
             break;
         default:
             if (currentOperator !== null && secondOperand !== '') {
