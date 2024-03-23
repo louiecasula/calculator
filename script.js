@@ -31,19 +31,10 @@ function buttonClick() {
 }
 
 function handleNumber(num) {
-    num = Number(num);
     if (currentOperator === null) {
-        if ((firstOperand === '0') && num === 0) {
-            firstOperand = '0';
-        } else {
-            firstOperand = String(Number(firstOperand + num));
-        }
+        firstOperand = firstOperand === '0'? num: firstOperand + num;
     } else {
-        if ((secondOperand === '0' || secondOperand === '') && num === 0) {
-            secondOperand = '0';
-        } else {
-            secondOperand = String(Number(secondOperand + num));
-        }
+        secondOperand = secondOperand === '0'? num: secondOperand + num;
     }
 }
 
