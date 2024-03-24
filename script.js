@@ -94,7 +94,7 @@ function clearDisplay() {
 
 function removeFinalDisplayNumber() {
     if (secondOperand !== '') {
-        if ((Number(secondOperand) > 0 && secondOperand.length === 1) ||
+        if ((Number(secondOperand) >= 0 && secondOperand.length === 1) ||
         (Number(secondOperand) < 0 && secondOperand.length === 2) ||
         isNaN(secondOperand)) {
             secondOperand = '0';
@@ -104,7 +104,7 @@ function removeFinalDisplayNumber() {
         }
     }
     else {
-        if ((Number(firstOperand) > 0 && firstOperand.length === 1) ||
+        if ((Number(firstOperand) >= 0 && firstOperand.length === 1) ||
         (Number(firstOperand) < 0 && firstOperand.length === 2) ||
         isNaN(firstOperand)) {
             firstOperand = '0';
